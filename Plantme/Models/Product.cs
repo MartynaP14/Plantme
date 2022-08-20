@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Plantme.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace Plantme.Models
 {
@@ -13,7 +14,7 @@ namespace Plantme.Models
 
         public string Description { get; set; }
 
-        public string ProductSpecies { get; set; }
+        public ProductTypes ProdcutTypes { get; set; }
 
         public float ProductSize { get; set; }
 
