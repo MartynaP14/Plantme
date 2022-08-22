@@ -19,6 +19,8 @@ namespace Plantme.Data
         public DbSet<User> Users { get; set; }
         
         public DbSet<Product> Products { get;set; }
+        
+        public DbSet<Plantme.Models.ProductOrder> ProductOrder { get; set; }
 
     }
 }
