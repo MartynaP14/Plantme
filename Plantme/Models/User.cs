@@ -1,7 +1,11 @@
-﻿namespace Plantme.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Plantme.Models
 {
     public class User
     {
+        [Key]
+        public int UserId { get; set; }
 
         public string UserLoginName { get; set; }
         public string UserEmail { get; set; }
@@ -16,19 +20,8 @@
 
         public string Address { get; set; }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //Database tables connection
+        public List<Product> Products { get; set; }
 
 
     }
