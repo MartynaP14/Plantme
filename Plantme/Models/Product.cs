@@ -1,5 +1,6 @@
 ﻿using Plantme.Data;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Plantme.Models
 {
@@ -37,6 +38,11 @@ namespace Plantme.Models
         public Boolean BeginnerFriendly { get; set; }
 
         public string Documentation { get; set; }
+
+        //User
+        public int UserId { get; set; }
+        [ForeignKey("UserId")]
+        public User User { get; set; }
 
     }
 }

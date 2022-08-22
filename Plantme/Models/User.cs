@@ -20,6 +20,8 @@ namespace Plantme.Models
 
         public string Address { get; set; }
 
+        //Database tables connection
+        public List<Product> Products { get; set; }
 
 
     }
