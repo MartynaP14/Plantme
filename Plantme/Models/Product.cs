@@ -40,8 +40,8 @@ namespace Plantme.Models
         public string Documentation { get; set; }
 
         //User
-        public int UserId { get; set; }
-        [ForeignKey("UserId")]
+        public string Id { get; set; }
+        [ForeignKey("Id")]
         public User User { get; set; }
 
     }

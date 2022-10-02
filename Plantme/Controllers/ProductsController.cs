@@ -17,7 +17,8 @@ namespace Plantme.Controllers
         public ProductsController(ApplicationDbContext context)
         {
             _context = context;
-            
+            _context.Database.EnsureCreated();
+
         }
 
         // GET: Products
@@ -66,7 +67,7 @@ namespace Plantme.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", product.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", product.Id);
             return View(product);
         }
 
@@ -83,7 +84,7 @@ namespace Plantme.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", product.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", product.Id);
             return View(product);
         }
 
@@ -119,7 +120,7 @@ namespace Plantme.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", product.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", product.Id);
             return View(product);
         }
 
