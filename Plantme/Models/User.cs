@@ -1,17 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Plantme.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        [Key]
-        public int UserId { get; set; }
+       
+        /*public int UserId { get; set; } */
 
         public string UserLoginName { get; set; }
         public string UserEmail { get; set; }
 
         public int UserPhoneNo { get; set; }
-
+        
         public string Location { get; set; }
 
         public string UserFirstName { get; set; }
@@ -22,7 +23,6 @@ namespace Plantme.Models
 
         //Database tables connection
         public List<Product> Products { get; set; }
-
-
+      
     }
 }
