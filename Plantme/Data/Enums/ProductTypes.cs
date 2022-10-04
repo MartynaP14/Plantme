@@ -1,8 +1,12 @@
-﻿namespace Plantme.Data
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Plantme.Data
 {
     public enum ProductTypes
     {
-        Flowering = 1,
+        [Display(Name = "Flowering")]
+        Flowering,
+
         Foliage,
         Cacti,
         IndoorPalms, 
