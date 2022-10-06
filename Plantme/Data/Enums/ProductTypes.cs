@@ -4,7 +4,7 @@ namespace Plantme.Data
 {
     public enum ProductTypes
     {
-        [Display(Name = "Flowering")]
+        //[Display(Name = "Flowering")]
         Flowering,
 
         Foliage,
