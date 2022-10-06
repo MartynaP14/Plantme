@@ -59,7 +59,7 @@ namespace Plantme.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,ProductName,ProductPrice,Description,ProdcutTypes,ProductSize,ProductCount,ProductImage,DifficultyLevel,Rating,GrowingConditions,PlantingInstructions,PetFriendly,ChildFriendly,BeginnerFriendly,Documentation,UserId")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductId,ProductName,ProductPrice,Description,ProductTypes,ProductSize,ProductCount,ProductImage,DifficultyLevel,Rating,GrowingConditions,PlantingInstructions,PetFriendly,ChildFriendly,BeginnerFriendly,Documentation,UserId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace Plantme.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,ProductPrice,Description,ProdcutTypes,ProductSize,ProductCount,ProductImage,DifficultyLevel,Rating,GrowingConditions,PlantingInstructions,PetFriendly,ChildFriendly,BeginnerFriendly,Documentation,UserId")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,ProductPrice,Description,ProductTypes,ProductSize,ProductCount,ProductImage,DifficultyLevel,Rating,GrowingConditions,PlantingInstructions,PetFriendly,ChildFriendly,BeginnerFriendly,Documentation,UserId")] Product product)
         {
             if (id != product.ProductId)
             {
