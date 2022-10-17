@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Plantme.Models
 {
-    public class User : IdentityUser
+    public class User 
     {
-       
-        /*public int UserId { get; set; } */
+        [Key]
+        public string Id { get; set; }
 
         public string UserLoginName { get; set; }
         public string UserEmail { get; set; }
@@ -22,7 +22,7 @@ namespace Plantme.Models
         public string Address { get; set; }
 
         //Database tables connection
-        public List<Product> Products { get; set; }
+        public List<ProductOrder> ProductOrder { get; set; }
       
     }
 }

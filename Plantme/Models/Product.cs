@@ -57,10 +57,7 @@ namespace Plantme.Models
         [Display(Name = "Documentation")]
         public string Documentation { get; set; }
 
-        //User
-        public string Id { get; set; }
-        [ForeignKey("Id")]
-        public User User { get; set; }
+        public List<OrderItemInfo> OrderItemInfo { get; set; }
 
     }
 }

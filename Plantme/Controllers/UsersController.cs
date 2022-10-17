@@ -10,85 +10,85 @@ using Plantme.Models;
 
 namespace Plantme.Controllers
 {
-    public class ProductsController : Controller
+    public class UsersController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ProductsController(ApplicationDbContext context)
+        public UsersController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Products
+        // GET: Users
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Products.ToListAsync());
+              return View(await _context.Users.ToListAsync());
         }
 
-        // GET: Products/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: Users/Details/5
+        public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null || _context.Users == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.ProductId == id);
-            if (product == null)
+            var user = await _context.Users
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(user);
         }
 
-        // GET: Products/Create
+        // GET: Users/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,ProductName,ProductPrice,Description,ProductTypes,ProductImage,DifficultyLevel,Rating,GrowingConditions,PlantingInstructions,PetFriendly,ChildFriendly,BeginnerFriendly,Documentation")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,UserLoginName,UserEmail,UserPhoneNo,Location,UserFirstName,UserSurname,Address")] User user)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
+                _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(user);
         }
 
-        // GET: Products/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: Users/Edit/5
+        public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null || _context.Users == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
             {
                 return NotFound();
             }
-            return View(product);
+            return View(user);
         }
 
-        // POST: Products/Edit/5
+        // POST: Users/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,ProductPrice,Description,ProductTypes,ProductImage,DifficultyLevel,Rating,GrowingConditions,PlantingInstructions,PetFriendly,ChildFriendly,BeginnerFriendly,Documentation")] Product product)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,UserLoginName,UserEmail,UserPhoneNo,Location,UserFirstName,UserSurname,Address")] User user)
         {
-            if (id != product.ProductId)
+            if (id != user.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace Plantme.Controllers
             {
                 try
                 {
-                    _context.Update(product);
+                    _context.Update(user);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.ProductId))
+                    if (!UserExists(user.Id))
                     {
                         return NotFound();
                     }
@@ -113,49 +113,49 @@ namespace Plantme.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(user);
         }
 
-        // GET: Products/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: Users/Delete/5
+        public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null || _context.Users == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.ProductId == id);
-            if (product == null)
+            var user = await _context.Users
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(user);
         }
 
-        // POST: Products/Delete/5
+        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Products == null)
+            if (_context.Users == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Products'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Users'  is null.");
             }
-            var product = await _context.Products.FindAsync(id);
-            if (product != null)
+            var user = await _context.Users.FindAsync(id);
+            if (user != null)
             {
-                _context.Products.Remove(product);
+                _context.Users.Remove(user);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(int id)
+        private bool UserExists(string id)
         {
-          return _context.Products.Any(e => e.ProductId == id);
+          return _context.Users.Any(e => e.Id == id);
         }
     }
 }

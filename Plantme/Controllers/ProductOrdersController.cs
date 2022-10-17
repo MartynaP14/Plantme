@@ -22,7 +22,7 @@ namespace Plantme.Controllers
         // GET: ProductOrders
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.ProductOrder.Include(p => p.Product);
+            var applicationDbContext = _context.ProductOrder.Include(p => p.User);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,7 +35,7 @@ namespace Plantme.Controllers
             }
 
             var productOrder = await _context.ProductOrder
-                .Include(p => p.Product)
+                .Include(p => p.User)
                 .FirstOrDefaultAsync(m => m.ProductOrderID == id);
             if (productOrder == null)
             {
@@ -48,7 +48,7 @@ namespace Plantme.Controllers
         // GET: ProductOrders/Create
         public IActionResult Create()
         {
-            ViewData["ProductId"] = new SelectList(_context.Products, "ProductId", "ProductId");
+            ViewData["Id"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace Plantme.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductOrderID,OrderDateTime,OrderQuantity,OrderSubtotal,ProductId")] ProductOrder productOrder)
+        public async Task<IActionResult> Create([Bind("ProductOrderID,OrderDateTime,OrderQuantity,OrderSubtotal,Id")] ProductOrder productOrder)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace Plantme.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductId"] = new SelectList(_context.Products, "ProductId", "ProductId", productOrder.ProductId);
+            ViewData["Id"] = new SelectList(_context.Users, "Id", "Id", productOrder.Id);
             return View(productOrder);
         }
 
@@ -82,7 +82,7 @@ namespace Plantme.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProductId"] = new SelectList(_context.Products, "ProductId", "ProductId", productOrder.ProductId);
+            ViewData["Id"] = new SelectList(_context.Users, "Id", "Id", productOrder.Id);
             return View(productOrder);
         }
 
@@ -91,7 +91,7 @@ namespace Plantme.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductOrderID,OrderDateTime,OrderQuantity,OrderSubtotal,ProductId")] ProductOrder productOrder)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductOrderID,OrderDateTime,OrderQuantity,OrderSubtotal,Id")] ProductOrder productOrder)
         {
             if (id != productOrder.ProductOrderID)
             {
@@ -118,7 +118,7 @@ namespace Plantme.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductId"] = new SelectList(_context.Products, "ProductId", "ProductId", productOrder.ProductId);
+            ViewData["Id"] = new SelectList(_context.Users, "Id", "Id", productOrder.Id);
             return View(productOrder);
         }
 
@@ -131,7 +131,7 @@ namespace Plantme.Controllers
             }
 
             var productOrder = await _context.ProductOrder
-                .Include(p => p.Product)
+                .Include(p => p.User)
                 .FirstOrDefaultAsync(m => m.ProductOrderID == id);
             if (productOrder == null)
             {

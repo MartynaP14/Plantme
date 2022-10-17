@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Plantme.Models
 {
     public class ProductOrder
     {
-
+        [Key]
         public int ProductOrderID {get;set;}
 
         public DateTime OrderDateTime { get; set; }
@@ -16,12 +17,12 @@ namespace Plantme.Models
        
 
         //Product
-        public int ProductId {get;set;}
-        [ForeignKey("ProductId")]
+        public string Id {get;set;}
+        [ForeignKey("Id")]
 
-        public Product Product {get;set;}
+        public User User {get;set;}
 
-
+        public List<OrderItemInfo> OrderItemInfo { get; set; }
 
 
 
