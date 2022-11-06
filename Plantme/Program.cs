@@ -1,8 +1,13 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Plantme;
 using Plantme.Data;
+using System.Configuration;
+
 
 var builder = WebApplication.CreateBuilder(args);
+//var startup = new Startup(builder.Configuration);
+//startup.ConfigureServices(builder.Services);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -15,6 +20,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+// startup.Configure(app, builder.Environment);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

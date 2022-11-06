@@ -61,7 +61,8 @@
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductPrice)
+                @item.ProductPrice.ToString("C2")
+                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
@@ -81,7 +82,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.GrowingConditions)
             </td>
-            <td>
+             <td>
                 @Html.DisplayFor(modelItem => item.PlantingInstructions)
             </td>
             <td>
@@ -96,6 +97,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Documentation)
             </td>
+
+            <td>
+                <a class="btn btn-primary" href="#">Add to Shopping Basket</a>
+            </td>
+            
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |

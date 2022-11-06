@@ -13,6 +13,9 @@ namespace Plantme.Models
         public ProductOrder ProductOrder { get; set; }
 
 
+
+
+
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
         public Product Product { get; set; }
@@ -20,3 +23,4 @@ namespace Plantme.Models
 
     }
 }
+
