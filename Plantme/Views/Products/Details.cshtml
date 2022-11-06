@@ -17,7 +17,8 @@
             @Html.DisplayFor(model => model.ProductName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ProductPrice)
+            @Html.DisplayNameFor(model => model.ProductPrice.ToString("C2"))
+           
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ProductPrice)
@@ -90,6 +91,20 @@
         </dd>
     </dl>
 </div>
+<script src="https://checkout.stripe.com/checkout.js"
+    class = "stripe-button"
+    data-key = "pk_test_51Lu0ZtC2OsCGbor9nEOIebsy0jpUeW4OTi2fsEoXOtnR27dnWlI4lsvYwBfSUD96yP7omxP1aL7uvpvhxfbOpzZU00RFofLyz6"
+    data-name ="Payment PlantMe"
+    data-description = "@Model.ProductName - @Model.ProductPrice"
+    data-locale="en"
+    data-label="Pay Now"
+    >
+       
+
+
+</script>
+
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.ProductId">Edit</a> |
     <a asp-action="Index">Back to List</a>

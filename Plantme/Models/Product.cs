@@ -1,6 +1,5 @@
 ﻿using Plantme.Data;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Plantme.Models
 {
@@ -15,7 +14,8 @@ namespace Plantme.Models
         [StringLength(100, ErrorMessage = "Plant name length exeeded, provide shorter name")]
         public string ProductName { get; set; }
 
-        [Display(Name = "Price per unit ($1)")]
+        [Display(Name = "Price per unit")]
+
     
         public float ProductPrice { get; set; }
 
