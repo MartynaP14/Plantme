@@ -5,25 +5,32 @@
         public int ProductId { get; set; }
         public string ProductName { get; set; }
 
-        public int ProdcutQuantity { get; set; }
+        public int ProductQuantity { get; set; }
 
         public float ProductPrice { get; set; }
 
+        public string ProductImage { get; set; }
+
         public float Total
         {
-            get { return ProdcutQuantity * ProductPrice; }
+            get { return ProductQuantity * ProductPrice; }
+
+        }
+
+        public BasketItem()
+        {
 
         }
 
 
-        public BasketItem(Product prodcut)
+        public BasketItem(Product product)
         {
-            ProductId = prodcut.ProductId;
-            ProductName = prodcut.ProductName;
-            ProdcutQuantity = 1;
-            ProductPrice = prodcut.ProductPrice;
+            ProductId = product.ProductId;
+            ProductName = product.ProductName;
+            ProductQuantity = 1;
+            ProductPrice = product.ProductPrice;
+            ProductImage = product.ProductImage;
 
-            //Add image later 
         }
     }
 
