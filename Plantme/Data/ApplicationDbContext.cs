@@ -22,5 +22,9 @@ namespace Plantme.Data
         
         public DbSet<Plantme.Models.ProductOrder> ProductOrder { get; set; }
 
+        internal object GetByID(Guid id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
