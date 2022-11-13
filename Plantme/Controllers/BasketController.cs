@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Plantme.Data;
 using Plantme.Models;
+using Stripe;
 
 namespace Plantme.Controllers
 {
@@ -46,11 +47,44 @@ namespace Plantme.Controllers
                 basketitem.ProductQuantity += 1;
             }
 
+            
+
             HttpContext.Session.SetJson("Basket", basket);
 
             TempData["Success"] = "Product was added to your basket";
 
             return Redirect(Request.Headers["Referer"].ToString());
+        }
+
+        [HttpPost]
+        public IActionResult Create(string stripeToken,Guid id )
+        {
+            var product = _context.GetByID(id);
+
+            var charge = new ChargeCreateOptions()
+            {
+                Amount = (long)(Convert.ToDouble(product.ProductPrice) * 100),
+                Currency = "eur",
+                Source = stripeToken,
+                Metadata = new Dictionary<string, string>()
+                {
+                    {"ProductId", product.Id.ToString()},
+                    {"ProductName", product.Name },
+
+                }
+
+            };
+
+            var service = new ChargeService();
+            Charge charge = service.Create(chargeOptions);
+
+            if(charge.Status == "succeeded")
+            {
+                return View("Pass");
+            }
+
+            return View("Fail");
+
         }
 
     }

@@ -8,15 +8,15 @@
 @if (Model.BasketItems.Count > 0)
 {
     <table class="table">
-    <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th></th>
-        <th>Price</th>
-        <th>Total</th>
-    </tr>
-    @foreach(var basketItem in Model.BasketItems)
-        { 
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th></th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+        @foreach (var basketItem in Model.BasketItems)
+        {
             <tr>
                 <td>@basketItem.ProductName</td>
                 <td>@basketItem.ProductQuantity</td>
@@ -28,27 +28,37 @@
                 <td>@basketItem.ProductPrice.ToString("C2") </td>
                 <td>@Model.BasketItems.Where(x => x.ProductId == basketItem.ProductId).Sum(x => x.ProductQuantity* x.ProductPrice).ToString("C2") </td>
             </tr>
-            
+
         }
         <tr>
-        <td class-"text-right" colspan="4">  Total:  @Model.TotalAmount.ToString("C2")</td>
+            <td class-"text-right" colspan="4">  Total:  @Model.TotalAmount.ToString("C2")</td>
         </tr>
 
         <tr>
-           <td class-"text-right" colspan="4"> 
-               <a class="btn btn-danger" asp-action="Clear"> Clear Basket </a>
-               <a class="btn btn-primary" href="#"> Checkout </a>
-            
-            
-           </td>
+            <td class-"text-right" colspan="4">
+                <a class="btn btn-danger" asp-action="Clear"> Clear Basket </a>
+                <script src="https://checkout.stripe.com/checkout.js"
+                    class="stripe-button"
+                    data-key="pk_test_51Lu0ZtC2OsCGbor9nEOIebsy0jpUeW4OTi2fsEoXOtnR27dnWlI4lsvYwBfSUD96yP7omxP1aL7uvpvhxfbOpzZU00RFofLyz6"
+                    data-name="Payment PlantMe"
+                    data-description="@Model.TotalAmount.ToString("C2")"
+                    data-locale="en"
+                    data-label="Pay Now">
+
+
+
+                </script>
+                @*<a class="btn btn-primary" href="#"> Checkout </a>*@
+                
+
+
+
+            </td>
         </tr>
 
-
-
-</table>
-
-    
-}else
+    </table>
+}
+else
 {
     <h3 class="display-4 text-center">Your Basket is Empty</h3>
 }
