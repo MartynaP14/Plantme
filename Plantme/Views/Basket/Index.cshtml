@@ -33,21 +33,23 @@
         <tr>
             <td class-"text-right" colspan="4">  Total:  @Model.TotalAmount.ToString("C2")</td>
         </tr>
-
+ 
         <tr>
+            
             <td class-"text-right" colspan="4">
                 <a class="btn btn-danger" asp-action="Clear"> Clear Basket </a>
+               <form method="post" asp-controller="Basket" >
                 <script src="https://checkout.stripe.com/checkout.js"
                     class="stripe-button"
                     data-key="pk_test_51Lu0ZtC2OsCGbor9nEOIebsy0jpUeW4OTi2fsEoXOtnR27dnWlI4lsvYwBfSUD96yP7omxP1aL7uvpvhxfbOpzZU00RFofLyz6"
                     data-name="Payment PlantMe"
                     data-description="@Model.TotalAmount.ToString("C2")"
                     data-locale="en"
-                    data-label="Pay Now">
+                    data-label="Pay Now" asp-action="Create">
 
 
 
-                </script>
+                </script></form>
                 @*<a class="btn btn-primary" href="#"> Checkout </a>*@
                 
 
