@@ -17,6 +17,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.6.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="107.0.5304.6200" />
     <PackageReference Include="Stripe.net" Version="40.13.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
     <PackageReference Include="VisioForge.DotNet.Core.TRIAL" Version="15.1.12" />
