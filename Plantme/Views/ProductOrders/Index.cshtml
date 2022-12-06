@@ -22,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.OrderSubtotal)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User.UserPhoneNo)
+                @Html.DisplayNameFor(model => model.User.PhoneNumber)
             </th>
             <th></th>
         </tr>
@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.OrderSubtotal)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.UserPhoneNo)
+                @Html.DisplayFor(modelItem => item.User.PhoneNumber)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ProductOrderID">Edit</a> |
