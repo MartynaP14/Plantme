@@ -3,15 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Plantme.Models
 {
-    public class User 
+    public class User : IdentityUser
     {
-        [Key]
-        public string Id { get; set; }
+        
+        
 
-        public string UserLoginName { get; set; }
-        public string UserEmail { get; set; }
-
-        public int UserPhoneNo { get; set; }
         
         public string Location { get; set; }
 
