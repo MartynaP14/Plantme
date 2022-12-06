@@ -57,35 +57,49 @@ namespace Plantme.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(string stripeToken,int id )
+        public async Task<IActionResult> Create(string stripeToken )
         {
             //var product = _context.GetByID();
+            List<long> item_ids = new List<long>();
 
             List<BasketItem> basket = HttpContext.Session.GetJson<List<BasketItem>>("Basket");
 
-            BasketItem basketitem = basket.Where(c => c.ProductId == id).FirstOrDefault();
-
-            var chargeStripe= new ChargeCreateOptions()
+            foreach (BasketItem item in basket)
             {
-                Amount = (long)(Convert.ToDouble(basketitem.ProductPrice) * 100),
-                Currency = "eur",
-                Source = stripeToken,
-                Metadata = new Dictionary<string, string>()
+                item_ids.Add(item.ProductId);
+            }
+
+            
+
+
+            foreach (long id in item_ids)
+
+            {
+
+                var item = await _context.Products.FindAsync((int)id);
+                var chargeStripe = new ChargeCreateOptions()
                 {
-                    {"ProductId", basketitem.ProductId.ToString()},
-                    {"ProductName", basketitem.ProductName },
+                    Amount = (long) (item.ProductPrice * 100),
+                    Currency = "eur",
+                    Source = stripeToken,
+                    Metadata = new Dictionary<string, string>()
+                {
+                    {"ProductId", item.ProductId.ToString()},
+                    {"ProductName", item.ProductName },
 
                 }
 
-            };
-
-            var service = new ChargeService();
-            Charge charge = service.Create(chargeStripe);
-
-            if(charge.Status == "succeeded")
-            {
-                return View("Pass");
+                };
+              
+                var service = new ChargeService();
+                Charge charge = service.Create(chargeStripe);
             }
+
+
+            //if(charge.Status == "succeeded")
+            //{
+            //    return View("Pass");
+            //}
 
             return View("Fail");
 

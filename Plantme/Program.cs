@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Plantme;
 using Plantme.Data;
 using System.Configuration;
+using Stripe;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +28,8 @@ builder.Services.AddSession(options =>
 
 });
 
+
+StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
 
 var app = builder.Build();
