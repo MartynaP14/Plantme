@@ -25,14 +25,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Store Locations</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="ProductOrders" asp-action="Index">Order</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ProductOrders" asp-action="Index">Stores</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
                         </li>
@@ -44,10 +42,7 @@
                         </li>
                     </ul>
 
-                     <form class="form-inline my-2 my-lg-0" asp-controller="Home" asp-action="Filter" style="padding-right: 25px;">
-                        <input name="searchString" type="text" class="form-control" placeholder="Search for a plant" aria-label="Username" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button>
-                    </form>
+
 
 
                     <partial name="_LoginPartial" />

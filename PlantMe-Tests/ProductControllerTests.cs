@@ -85,7 +85,7 @@ namespace PlantMe_Tests
 
 
             //Act
-            var result = products_controller.Index();
+            var result = products_controller.Index("");
 
             //Assert
             Assert.NotNull(result);
