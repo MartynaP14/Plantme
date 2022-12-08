@@ -20,8 +20,21 @@ namespace Plantme.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
+            if (_context.Products == null)
+            {
+                return Problem("Product does not exist");
+            }
+            var products = from p in _context.Products
+                           select p;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(p => p.ProductName!.Contains(searchString));
+                return View(products);
+            }
+
               return View(await _context.Products.ToListAsync());
         }
 
