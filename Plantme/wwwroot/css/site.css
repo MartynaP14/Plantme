@@ -16,3 +16,14 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+#map {
+    height: 700px;
+    width: auto;
+}
+
+
+#btn btn-outline-secondary{
+    display = inline-block;
+}
