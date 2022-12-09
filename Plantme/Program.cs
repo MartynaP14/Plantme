@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 //startup.ConfigureServices(builder.Services);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("AzureConnection");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -29,7 +29,7 @@ builder.Services.AddSession(options =>
 });
 
 
-//StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
 
 var app = builder.Build();
