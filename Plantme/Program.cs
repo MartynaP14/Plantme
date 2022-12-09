@@ -29,7 +29,7 @@ builder.Services.AddSession(options =>
 });
 
 
-StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+//StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
 
 var app = builder.Build();
