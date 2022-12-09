@@ -101,7 +101,7 @@ namespace Plantme.Controllers
             //    return View("Pass");
             //}
 
-            return View("Fail");
+            return View("Pass");
 
         }
 
