@@ -10,7 +10,7 @@ namespace PlantMe_Tests
         {
             var driver = new ChromeDriver();
 
-            driver.Navigate().GoToUrl("https://plantme01.azurewebsites.net/");
+            driver.Navigate().GoToUrl("https://plantme02.azurewebsites.net/");
 
             driver.Quit();
 
